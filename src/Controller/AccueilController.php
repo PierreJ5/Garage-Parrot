@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+// Affichage de la page d'accueil
 class AccueilController extends AbstractController
 {
     #[Route('/', name: 'app_accueil')]

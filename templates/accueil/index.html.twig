@@ -1,15 +1,172 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}G.Parrot Accueil{% endblock %}
+{% block stylesheets %}
+h3 {
+    margin: 0;
+}
+
+section {
+    border: 2px solid black;
+    border-radius: 20px;
+}
+
+.carousel {
+    min-height: 160px;
+}
+{% endblock %}
 
 {% block body %}
 
+    <div class='text-center mb-4'>
+        <h1 class='fs-1'>Garage V.Parrot</h1>
+        <p>Nous vous Souhaitons la Bienvenue sur notre Site.</p>
+    </div>
 
-    <h1>Page Accueil</h1>
+    <div class='row'>   
+        <div class='col-12'>
+            <div>
+                <h2 class='text-center fs-3'>Qui sommes Nous?</h2>
+                <div class='col-12 col-lg-8 mx-auto'>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                        dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+                        ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+                        fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+                        mollit anim id est laborum
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class='col-12 mt-4'>
+            <h2 class='text-center fs-3'>Nos Services</h2>
+            <p class='text-center'> 
+                Nous Vous proposons les services ci dessous ; </br> (Pensez à nous contacter via le formulaire, ou par téléphone) !
+            </p>
 
-    <div> Presentation du garage </div>
-    <div> Liste des Services </div>
-    <div> Espace Avis Client </div>
+            <!-- CE QUI SUIT EST A TITRE D'EXEMPLE ET ATTEND LA MISE EN PLACE DE LA BASE DE DONNEES -->
+
+            <div class='col-lg-8 mx-auto'> 
+                <section class='mt-1'>
+                    <h3 class='fs-5 ps-4'>Vidange</h3>
+                    <p class='ps-4'>Prix : 99 $</p>
+                    <p class='ps-3'>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                        dolore magna aliqua.
+                    </p>
+                </section>
+                <section class='mt-1'>
+                    <h3 class='fs-5 ps-4'>Depannage</h3>
+                    <p class='ps-4'>Prix : 99 $</p>
+                    <p class='ps-3'>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                        dolore magna aliqua.
+                    </p>
+                </section>
+                <section class='mt-1'>
+                    <h3 class='fs-5 ps-4'>Changement pare-brise</h3>
+                    <p class='ps-4'>Prix : 99 $</p>
+                    <p class='ps-3'>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                        dolore magna aliqua.
+                    </p>
+                </section>   
+                <section class='mt-1'> 
+                    <h3 class='fs-5 ps-4'>Changement Pneus</h3>
+                    <p class='ps-4'>Prix : 99 $</p>
+                    <p class='ps-3'>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                        dolore magna aliqua.
+                    </p>
+                </section>  
+                <section class='mt-1'>
+                <h4 class='text-center fs-6'>Nous vous proposons aussis:</h4>
+                <ul>
+                    <li>
+                        Entretien Climatisation
+                    </li>
+                    <li>
+                        Nettoyage Après réparations
+                    </li>
+                    <li>
+                        Pression des pneus
+                    </li>
+                </ul>
+                </section>  
+            </div>
+        </div>
+
+
+        <div class='col-12 col-lg-8 text-center mx-auto mt-4 pannel-avis-client'>
+            <h2>Avis Clients</h2>
+
+            <div id="carouselExampleAutoplaying" class="carousel carousel-dark slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <p>Marie</p>
+                        <p>Satisfaite</p>
+                        <div class="col-8 col-lg-6 mx-auto">
+                            <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                            </p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <p>Jean</p>
+                        <p>Services irréprochables</p>
+                        <div class="col-8 col-lg-6 mx-auto">
+                            <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore !
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <p>Stéphane</p>
+                        <p>Attente un peu longue</p>
+                        <div class="col-8 col-lg-6 mx-auto">
+                            <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore !
+                            Lorem ipsum dolor sit amet.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+
+            <div>
+                <h3>Déposez votre Avis!</h3>
+                <form action="" method="get" class="form-example mt-2 container">
+                    <div class="form-example d-flex flex-column">
+                        <label for="name">Entrez votre Nom: </label>
+                        <input class="col-12 col-md-4 mx-auto" type="text" name="name" id="name" required />
+                    </div>
+                    <div class="form-example d-flex flex-column">
+                        <label for="email">Entrez votre email: </label>
+                        <input class="col-12 col-md-6 mx-auto" type="email" name="email" id="email" required />
+                    </div>
+                    <div class="form-example d-flex flex-column">
+                        <label for="content">Entrez votre message: </label>
+                        <textarea class="col-12 col-md-6 mx-auto" name="content" id="content" rows="4" required />
+                        </textarea>
+                    </div>
+                    <div class=" mt-1 form-example">
+                        <input type="submit" value="Envoyer" />
+                    </div>
+                </form>
+            </div>
+
+        </div>
+
+    </div>
 
 
 {% endblock %}
