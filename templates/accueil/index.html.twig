@@ -58,15 +58,11 @@ section {
                 <section class='mt-1'>
                 <h4 class='text-center fs-6'>Nous vous proposons aussis:</h4>
                 <ul>
+                    {% for sS in services_S %}
                     <li>
-                        Entretien Climatisation
+                        {{ sS.getTitre }}
                     </li>
-                    <li>
-                        Nettoyage Après réparations
-                    </li>
-                    <li>
-                        Pression des pneus
-                    </li>
+                    {% endfor %}
                 </ul>
                 </section>  
             </div>
