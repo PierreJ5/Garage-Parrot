@@ -73,56 +73,9 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>Lundi</td>
-                                    <td>09:30</td>
-                                    <td>/</td>
-                                    <td>12:00</td>
-                                    <td>-</td>
-                                    <td>14:00</td>
-                                    <td>/</td>
-                                    <td>19:00</td>
-                                </tr>
-                                <tr>
-                                    <td>Mardi</td>
-                                    <td>09:30</td>
-                                    <td>/</td>
-                                    <td>12:00</td>
-                                    <td>-</td>
-                                    <td>14:00</td>
-                                    <td>/</td>
-                                    <td>19:00</td>
-                                </tr>
-                                <tr>
-                                    <td>Mercredi</td>
-                                    <td>09:30</td>
-                                    <td>/</td>
-                                    <td>12:00</td>
-                                    <td>-</td>
-                                    <td>14:00</td>
-                                    <td>/</td>
-                                    <td>19:00</td>
-                                </tr>
-                                <tr>
-                                    <td>Jeudi</td>
-                                    <td>09:30</td>
-                                    <td>/</td>
-                                    <td>12:00</td>
-                                    <td>-</td>
-                                    <td>14:00</td>
-                                    <td>/</td>
-                                    <td>19:00</td>
-                                </tr>
-                                <tr>
-                                    <td>Vendredi</td>
-                                    <td>09:30</td>
-                                    <td>/</td>
-                                    <td>12:00</td>
-                                    <td>-</td>
-                                    <td>14:00</td>
-                                    <td>/</td>
-                                    <td>19:00</td>
-                                </tr>
+                                {% block horaires %}
+                                {% include 'models/horairesFooter.html.twig'%}
+                                {% endblock %}
                             </tbody>
                         </table>
                     </div>
