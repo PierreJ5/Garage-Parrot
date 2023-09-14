@@ -2,12 +2,67 @@
 
 {% block title %}G.Parrot Galerie{% endblock %}
 
+{% block stylesheets %}
+
+{% endblock %}
+
 {% block body %}
 
-    <div>Fonction de Trie JS</div>
+<!-- TABLEAU FONCTION TRIE DYNAMIQUE -->
 
-    
-    <h1>Page Galerie</h1>
+<div class="row py-3" style="background: lightblue;">
+    <div clas="col-12 d-flex">
+        <div class="d-flex justify-content-between">
+            <div class="d-inline-flex">\Fonction trie marque/</div>
+            <div class="d-inline-flex">\Fonction trie modele/</div>
+            <div class="d-inline-flex">\Fonction trie annee/</div>
+        </div>
+    </div>
+    <div clas="col-12 d-flex">
+        <div class="d-flex justify-content-around">
+            <div class="d-inline-flex">\Fonction trie type gasoil/</div>
+            <div class="d-inline-flex">\Fonction trie prix/</div>
+        </div>
+    </div>
+    <div class="col-12">
+        <div class="d-flex justify-content-center">
+            <button>Recherche</button>
+        </div>
+    </div>
+</div>
 
-    <div>Espace Galerie/Affichage</div>
+<!-- CREATION DES CARTES VEHICULES -->
+
+<h1 class="text-center">Nos Véhicules à vendre</h1>
+
+<div class="container">
+    <div class="row">
+    {% for i in 0..7 %}
+        <div class="col-12 col-md-6 col-lg-4 mb-3">
+            <div class="card">
+                <img src="{{ asset('images/Vehicules/defaut.jpg') }}" class="card-img-top" alt="image">
+                <div class="card-body">
+                    <h5 class="card-title">Marque</h5>
+                    <h6>Modele</h6>
+                    <p>Année : 11/2017</p>
+                    <p>Chevaux : 120</p>
+                    <div class="d-flex">
+                        <div class="col-6">
+                            <p >Essence</p>
+                            <p>127 000 Km<p>
+                        </div>
+                        <div class="col-6">
+                            <a href="#" class="btn btn-primary float-end">Plus d'Infos</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+
+
+</div>
 {% endblock %}
+
+
