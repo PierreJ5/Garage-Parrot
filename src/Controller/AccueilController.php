@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\HorairesGarage;
+use App\Entity\ServicesPrincipaux;
 use Doctrine\ORM\EntityManagerInterface;
 
 // Affichage de la page d'accueil
@@ -15,10 +16,12 @@ class AccueilController extends AbstractController
     public function index(EntityManagerInterface $entityManager): Response
     {
         $horaires = $entityManager->getRepository(HorairesGarage::class)->findAll();
+        $servicesP = $entityManager->getRepository(ServicesPrincipaux::class)->findAll();
 
 
         return $this->render('accueil/index.html.twig', [
             'horaires' => $horaires,
+            'services_P' => $servicesP,
         ]);
     }
 }

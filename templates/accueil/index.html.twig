@@ -44,41 +44,17 @@ section {
                 Nous Vous proposons les services ci dessous ; </br> (Pensez à nous contacter via le formulaire, ou par téléphone) !
             </p>
 
-            <!-- CE QUI SUIT EST A TITRE D'EXEMPLE ET ATTEND LA MISE EN PLACE DE LA BASE DE DONNEES -->
-
             <div class='col-lg-8 mx-auto'> 
+            {% for sP in services_P %}
                 <section class='mt-1'>
-                    <h3 class='fs-5 ps-4'>Vidange</h3>
-                    <p class='ps-4'>Prix : 99 $</p>
+                    <h3 class='fs-5 ps-4'>{{ sP.getTitre }}</h3>
+                    <p class='ps-4'>Prix : {{ sP.getPrix }} $</p>
                     <p class='ps-3'>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                        dolore magna aliqua.
+                        {{ sP.getDescription }}
                     </p>
                 </section>
-                <section class='mt-1'>
-                    <h3 class='fs-5 ps-4'>Depannage</h3>
-                    <p class='ps-4'>Prix : 99 $</p>
-                    <p class='ps-3'>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                        dolore magna aliqua.
-                    </p>
-                </section>
-                <section class='mt-1'>
-                    <h3 class='fs-5 ps-4'>Changement pare-brise</h3>
-                    <p class='ps-4'>Prix : 99 $</p>
-                    <p class='ps-3'>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                        dolore magna aliqua.
-                    </p>
-                </section>   
-                <section class='mt-1'> 
-                    <h3 class='fs-5 ps-4'>Changement Pneus</h3>
-                    <p class='ps-4'>Prix : 99 $</p>
-                    <p class='ps-3'>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                        dolore magna aliqua.
-                    </p>
-                </section>  
+            {% endfor %}
+ 
                 <section class='mt-1'>
                 <h4 class='text-center fs-6'>Nous vous proposons aussis:</h4>
                 <ul>
