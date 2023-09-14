@@ -1,12 +1,12 @@
 {% for h in horaires %}
     <tr>
     <td>{{ h.jour }}</td>
-    <td>{{ h.OuvAm}}</td>
+    <td>{{ h.OuvAm}}h</td>
     <td>/</td>
-    <td>{{ h.FerAm }}</td>
-    <td>-</td>
-    <td>{{ h.OuvPm }}</td>
+    <td>{{ h.FerAm }}h</td>
+    <td> - </td>
+    <td>{{ h.OuvPm }}h</td>
     <td>/</td>
-    <td>{{ h.FerPm }}</td>
+    <td>{{ h.FerPm }}h</td>
     </tr>
 {% endfor %}
