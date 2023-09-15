@@ -23,7 +23,7 @@
                 <label for="marque-select-list"></label>
 
                 <select name="marque-select" id="marque-select-list">
-                <option value="">Marque du Véhicule</option>
+                <option value="null">Marque du Véhicule</option>
                 <optgroup label="Véhicules disponible">
                     {% for v in vehiculeInfo %}
                     <option value="{{ v.marque }}">{{ v.marque }}</option>
@@ -36,7 +36,7 @@
                 <label for="modele-select-list"></label>
 
                 <select name="modele-select" id="modele-select-list">
-                <option value="">Modèle du Véhicule</option>
+                <option value="null">Modèle du Véhicule</option>
                 <optgroup label="Véhicules disponible">
                     {% for v in vehiculeInfo %}
                     <option value="{{ v.modele }}">{{ v.modele }}</option>
@@ -49,7 +49,7 @@
                 <label for="annee-select-list"></label>
 
                 <select name="annee-select" id="annee-select-list">
-                    <option value="">Année du Véhicule</option>
+                    <option value="null">Année du Véhicule</option>
                     {% for i in 2023..1960 %}
                     <option value="{{ i }}">{{ i }}</option>
                     {% endfor %}
@@ -59,8 +59,8 @@
                 <label for="carburant-select-list"></label>
 
                 <select name="carburant-select" id="carburant-select-list">
-                    <option value="">Type de carburant</option>
-                    <option value="gasoil">Diesel</option>
+                    <option value="null">Type de carburant</option>
+                    <option value="Diesel">Diesel</option>
                     <option value="essence">Essence</option>
                     <option value="electrique">Éléctrique</option>
                 </select>

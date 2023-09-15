@@ -10,6 +10,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const button = document.getElementById('subButton');
 
     button.addEventListener('click', () => {
+
+
         var dataFiltres = {
             marque: marque.value,
             modele: modele.value,
@@ -18,7 +20,7 @@ document.addEventListener('DOMContentLoaded', function () {
             minPrix: minPrix.value,
             maxPrix: maxPrix.value
         };
-
+        console.log(dataFiltres);
         var xhr = new XMLHttpRequest();
         xhr.open('POST', '/data/filtres', true);
         xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
@@ -29,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 // Attente de Réponse
 
-
+   
                 console.log(xhr.responseText);
             }else {
                 console.log('error')
