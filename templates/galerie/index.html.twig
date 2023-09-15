@@ -3,7 +3,7 @@
 {% block title %}G.Parrot Galerie{% endblock %}
 
 {% block stylesheets %}
-
+<link href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.6.4/nouislider.min.css" rel="stylesheet">
 {% endblock %}
 
 {% block body %}
@@ -13,19 +13,70 @@
 <div class="row py-3" style="background: lightblue;">
     <div clas="col-12 d-flex">
         <div class="d-flex justify-content-between">
-            <div class="d-inline-flex">\Fonction trie marque/</div>
-            <div class="d-inline-flex">\Fonction trie modele/</div>
-            <div class="d-inline-flex">\Fonction trie annee/</div>
+            <section class="d-inline-flex">
+                <label for="marque-select"></label>
+
+                <select name="marque-select" id="marque-select-list">
+                <option value="">Marque du Véhicule</option>
+                <optgroup label="Véhicules disponible">
+                    <option value="Nissan">Nissan</option>
+                    <option value="Peugeot">Peugeot</option>
+                </optgroup>
+                </select>
+            </section>
+
+            <section class="d-inline-flex">
+                <label for="modele-select"></label>
+
+                <select name="marque-select" id="modele-select-list">
+                <option value="">Modèle du Véhicule</option>
+                <optgroup label="Véhicules disponible">
+                    <option value="note">Note</option>
+                    <option value="308">308</option>
+                </optgroup>
+                </select>
+            </section>
+
+            <section class="d-inline-flex">
+                <label for="annee-select"></label>
+
+                <select name="annee-select" id="marque-select-list">
+                    <option value="">Année du Véhicule</option>
+                    {% for i in 2023..1960 %}
+                    <option value="{{ i }}">{{ i }}</option>
+                    {% endfor %}
+                </select>
+            </section>
+            <section class="d-inline-flex">
+                <label for="carburant-select"></label>
+
+                <select name="carburant-select" id="modele-select-list">
+                    <option value="">Type de carburant</option>
+                    <option value="gasoil">Gasoil</option>
+                    <option value="essence">Essence</option>
+                    <option value="electrique">Élèctrique</option>
+                </select>
+            </section>
         </div>
     </div>
     <div clas="col-12 d-flex">
         <div class="d-flex justify-content-around">
-            <div class="d-inline-flex">\Fonction trie type gasoil/</div>
-            <div class="d-inline-flex">\Fonction trie prix/</div>
+
+
+            <section class="d-inline-flex">
+                <label for="prix-select"></label>
+
+                <select name="prix-select" id="prix-select">
+                    <option value="">Type de carburant</option>
+                    <option value="gasoil">Gasoil</option>
+                    <option value="essence">Essence</option>
+                    <option value="electrique">Élèctrique</option>
+                </select>
+            </section>
         </div>
     </div>
     <div class="col-12">
-        <div class="d-flex justify-content-center">
+        <div class="d-flex justify-content-center mt-2">
             <button>Recherche</button>
         </div>
     </div>
