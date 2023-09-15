@@ -38,6 +38,9 @@ class Vehicules
     #[ORM\OneToOne(mappedBy: 'id_vehicule', cascade: ['persist', 'remove'])]
     private ?InfoVehicules $infoData = null;
 
+    #[ORM\Column]
+    private ?int $prix = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -140,6 +143,18 @@ class Vehicules
         }
 
         $this->infoData = $infoData;
+
+        return $this;
+    }
+
+    public function getPrix(): ?int
+    {
+        return $this->prix;
+    }
+
+    public function setPrix(int $prix): static
+    {
+        $this->prix = $prix;
 
         return $this;
     }
