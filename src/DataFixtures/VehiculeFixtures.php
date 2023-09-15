@@ -78,6 +78,138 @@ class VehiculeFixtures extends Fixture
         $manager->persist($voiture2);
         $manager->persist($infoV2);
 
+        $voiture3 = new Vehicules();
+        $voiture3->setMarque('BMW');
+        $voiture3->setModele('E.36');
+        $voiture3->setChevaux(180);
+        $voiture3->setAnnee($dateT);
+        $voiture3->setKilometres(143000);
+        $voiture3->setTypeCarburant('Essence');
+        $voiture3->setDateAjout($dateT);
+        $voiture3->setPrix(10989);
+
+        $infoV3 = new InfoVehicules();
+        $infoV3->setNbPortes(3);
+        $infoV3->setNbSieges(5);
+        $infoV3->setAbs(true);
+        $infoV3->setRoueMotrices(2);
+        $infoV3->setDirAssistee(true);
+        $infoV3->setEsp(true);
+        $infoV3->setAbAv(true);
+        $infoV3->setAbAr(true);
+        $infoV3->setWifi(false);
+        $infoV3->setBluetooth(true);
+        $infoV3->setRegVitesse(true);
+        $infoV3->setLimVitesse(true);
+        $infoV3->setCorrecTraj(true);
+        $infoV3->setAideParking(true);
+        $infoV3->setPropTrac('Propulsion');
+        $infoV3->setAvisVendeur('Trés bon véhicule. Une bonne occasion. Révisions OK');
+
+        $voiture3->setInfoData($infoV3);
+
+        $manager->persist($voiture3);
+        $manager->persist($infoV3);
+
+        $voiture4 = new Vehicules();
+        $voiture4->setMarque('Nissan');
+        $voiture4->setModele('Note');
+        $voiture4->setChevaux(90);
+        $voiture4->setAnnee($dateT);
+        $voiture4->setKilometres(250000);
+        $voiture4->setTypeCarburant('Diesel');
+        $voiture4->setDateAjout($dateT);
+        $voiture4->setPrix(5999);
+
+        $infoV4 = new InfoVehicules();
+        $infoV4->setNbPortes(5);
+        $infoV4->setNbSieges(5);
+        $infoV4->setAbs(true);
+        $infoV4->setRoueMotrices(2);
+        $infoV4->setDirAssistee(true);
+        $infoV4->setEsp(true);
+        $infoV4->setAbAv(true);
+        $infoV4->setAbAr(true);
+        $infoV4->setWifi(false);
+        $infoV4->setBluetooth(true);
+        $infoV4->setRegVitesse(false);
+        $infoV4->setLimVitesse(false);
+        $infoV4->setCorrecTraj(true);
+        $infoV4->setAideParking(false);
+        $infoV4->setPropTrac('Traction');
+        $infoV4->setAvisVendeur('Trés bon véhicule. Une bonne occasion');
+
+        $voiture4->setInfoData($infoV4);
+
+        $manager->persist($voiture4);
+        $manager->persist($infoV4);
+
+        $voiture5 = new Vehicules();
+        $voiture5->setMarque('Ford');
+        $voiture5->setModele('Mustang');
+        $voiture5->setChevaux(250);
+        $voiture5->setAnnee($dateT);
+        $voiture5->setKilometres(50000);
+        $voiture5->setTypeCarburant('Diesel');
+        $voiture5->setDateAjout($dateT);
+        $voiture5->setPrix(25999);
+
+        $infoV5 = new InfoVehicules();
+        $infoV5->setNbPortes(3);
+        $infoV5->setNbSieges(5);
+        $infoV5->setAbs(true);
+        $infoV5->setRoueMotrices(2);
+        $infoV5->setDirAssistee(false);
+        $infoV5->setEsp(true);
+        $infoV5->setAbAv(true);
+        $infoV5->setAbAr(true);
+        $infoV5->setWifi(false);
+        $infoV5->setBluetooth(true);
+        $infoV5->setRegVitesse(false);
+        $infoV5->setLimVitesse(false);
+        $infoV5->setCorrecTraj(true);
+        $infoV5->setAideParking(false);
+        $infoV5->setPropTrac('Traction');
+        $infoV5->setAvisVendeur('Rare Occasion');
+
+        $voiture5->setInfoData($infoV5);
+        
+        $manager->persist($voiture5);
+        $manager->persist($infoV5);
+
+        $voiture6 = new Vehicules();
+        $voiture6->setMarque('Opel');
+        $voiture6->setModele('Astra');
+        $voiture6->setChevaux(110);
+        $voiture6->setAnnee($dateT);
+        $voiture6->setKilometres(120000);
+        $voiture6->setTypeCarburant('Diesel');
+        $voiture6->setDateAjout($dateT);
+        $voiture6->setPrix(9999);
+
+        $infoV6 = new InfoVehicules();
+        $infoV6->setNbPortes(5);
+        $infoV6->setNbSieges(5);
+        $infoV6->setAbs(true);
+        $infoV6->setRoueMotrices(2);
+        $infoV6->setDirAssistee(true);
+        $infoV6->setEsp(true);
+        $infoV6->setAbAv(true);
+        $infoV6->setAbAr(true);
+        $infoV6->setWifi(false);
+        $infoV6->setBluetooth(true);
+        $infoV6->setRegVitesse(false);
+        $infoV6->setLimVitesse(false);
+        $infoV6->setCorrecTraj(true);
+        $infoV6->setAideParking(false);
+        $infoV6->setPropTrac('Traction');
+        $infoV6->setAvisVendeur('Trés bon véhicule. Une bonne occasion');
+
+        $voiture6->setInfoData($infoV6);
+        
+        $manager->persist($voiture6);
+        $manager->persist($infoV6);
+
         $manager->flush();
     }
 }

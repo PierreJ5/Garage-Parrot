@@ -8,6 +8,10 @@
 }
 {% endblock %}
 
+{% block javascripts %}
+    <script src="{{ asset('js/fonctionFiltres.js') }}"></script>
+{% endblock %}
+
 {% block body %}
 
 <!-- TABLEAU FONCTION TRIE DYNAMIQUE -->
@@ -21,8 +25,9 @@
                 <select name="marque-select" id="marque-select-list">
                 <option value="">Marque du Véhicule</option>
                 <optgroup label="Véhicules disponible">
-                    <option value="Nissan">Nissan</option>
-                    <option value="Peugeot">Peugeot</option>
+                    {% for v in vehiculeInfo %}
+                    <option value="{{ v.marque }}">{{ v.marque }}</option>
+                    {% endfor %}
                 </optgroup>
                 </select>
             </section>
@@ -33,8 +38,9 @@
                 <select name="modele-select" id="modele-select-list">
                 <option value="">Modèle du Véhicule</option>
                 <optgroup label="Véhicules disponible">
-                    <option value="note">Note</option>
-                    <option value="308">308</option>
+                    {% for v in vehiculeInfo %}
+                    <option value="{{ v.modele }}">{{ v.modele }}</option>
+                    {% endfor %}
                 </optgroup>
                 </select>
             </section>
@@ -54,9 +60,9 @@
 
                 <select name="carburant-select" id="carburant-select-list">
                     <option value="">Type de carburant</option>
-                    <option value="gasoil">Gasoil</option>
+                    <option value="gasoil">Diesel</option>
                     <option value="essence">Essence</option>
-                    <option value="electrique">Élèctrique</option>
+                    <option value="electrique">Éléctrique</option>
                 </select>
             </section>
         </div>
@@ -81,7 +87,7 @@
     </div>
     <div class="col-12">
         <div class="d-flex justify-content-center mt-2">
-            <button>Recherche</button>
+            <button id="subButton">Recherche</button>
         </div>
     </div>
 </div>
@@ -92,22 +98,21 @@
 
 <div class="container ctnr-galerie">
     <div class="row">
-    {% for i in 0..7 %}
+    {% for v in vehiculeInfo %}
         <div class="col-12 col-md-6 col-lg-4 mb-3">
             <div class="card">
                 <img src="{{ asset('images/Vehicules/defaut.jpg') }}" class="card-img-top" alt="image">
                 <div class="card-body">
-                    <h5 class="card-title">Marque</h5>
-                    <h6>Modele</h6>
-                    <p>Année : 11/2017</p>
-                    <p>Chevaux : 120</p>
+                    <h5 class="card-title">{{ v.marque }} {{ v.modele }}</h5>
+                    <p>Année : {{ v.annee | date('Y-m') }} </p>
+                    <p>Chevaux : {{ v.chevaux }}</p>
                     <div class="d-flex">
                         <div class="col-6">
-                            <p >Essence</p>
-                            <p>127 000 Km<p>
+                            <p >{{ v.typeCarburant }}</p>
+                            <p>{{ v.kilometres }} Km<p>
                         </div>
                         <div class="col-6">
-                            <a href="#" class="btn btn-primary float-end">Plus d'Infos</a>
+                            <a href="#" class="btn btn-primary float-end">Plus d'Info</a>
                         </div>
                     </div>
                 </div>
