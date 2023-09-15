@@ -3,7 +3,9 @@
 {% block title %}G.Parrot Galerie{% endblock %}
 
 {% block stylesheets %}
-<link href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.6.4/nouislider.min.css" rel="stylesheet">
+.ctnr-galerie {
+    min-height: 80vh; 
+}
 {% endblock %}
 
 {% block body %}
@@ -12,9 +14,9 @@
 
 <div class="row py-3" style="background: lightblue;">
     <div clas="col-12 d-flex">
-        <div class="d-flex justify-content-between">
+        <div class="d-flex justify-content-around">
             <section class="d-inline-flex">
-                <label for="marque-select"></label>
+                <label for="marque-select-list"></label>
 
                 <select name="marque-select" id="marque-select-list">
                 <option value="">Marque du Véhicule</option>
@@ -26,9 +28,9 @@
             </section>
 
             <section class="d-inline-flex">
-                <label for="modele-select"></label>
+                <label for="modele-select-list"></label>
 
-                <select name="marque-select" id="modele-select-list">
+                <select name="modele-select" id="modele-select-list">
                 <option value="">Modèle du Véhicule</option>
                 <optgroup label="Véhicules disponible">
                     <option value="note">Note</option>
@@ -38,9 +40,9 @@
             </section>
 
             <section class="d-inline-flex">
-                <label for="annee-select"></label>
+                <label for="annee-select-list"></label>
 
-                <select name="annee-select" id="marque-select-list">
+                <select name="annee-select" id="annee-select-list">
                     <option value="">Année du Véhicule</option>
                     {% for i in 2023..1960 %}
                     <option value="{{ i }}">{{ i }}</option>
@@ -48,9 +50,9 @@
                 </select>
             </section>
             <section class="d-inline-flex">
-                <label for="carburant-select"></label>
+                <label for="carburant-select-list"></label>
 
-                <select name="carburant-select" id="modele-select-list">
+                <select name="carburant-select" id="carburant-select-list">
                     <option value="">Type de carburant</option>
                     <option value="gasoil">Gasoil</option>
                     <option value="essence">Essence</option>
@@ -59,20 +61,22 @@
             </section>
         </div>
     </div>
+
+                            <!-- Selecteur pour trie du Prix ci dessous -->
+
     <div clas="col-12 d-flex">
-        <div class="d-flex justify-content-around">
+        <div class="d-flex justify-content-center mt-2">
 
-
-            <section class="d-inline-flex">
-                <label for="prix-select"></label>
-
-                <select name="prix-select" id="prix-select">
-                    <option value="">Type de carburant</option>
-                    <option value="gasoil">Gasoil</option>
-                    <option value="essence">Essence</option>
-                    <option value="electrique">Élèctrique</option>
-                </select>
+            <section class="d-flex flex-column">
+                <label for="prix-select-min" class="text-center">Prix minimum</label>
+                <input name="prix-select-mini" id="prix-select-min" placeholder="800">
             </section>
+
+            <section class="d-flex flex-column">
+                <label for="prix-select-max" class="text-center">Prix maximum</label>
+                <input name="prix-select-maxi" id="prix-select-max" placeholder="7500">
+            </section>
+
         </div>
     </div>
     <div class="col-12">
@@ -82,11 +86,11 @@
     </div>
 </div>
 
-<!-- CREATION DES CARTES VEHICULES -->
+                        <!-- AFFICHAGE DES CARTES DES VEHICULES -->
 
 <h1 class="text-center">Nos Véhicules à vendre</h1>
 
-<div class="container">
+<div class="container ctnr-galerie">
     <div class="row">
     {% for i in 0..7 %}
         <div class="col-12 col-md-6 col-lg-4 mb-3">
@@ -109,7 +113,7 @@
                 </div>
             </div>
         </div>
-    {% endfor %}
+    {% endfor %} 
     </div>
 
 
