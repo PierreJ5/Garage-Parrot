@@ -25,37 +25,35 @@ class DataFiltresController extends AbstractController
         $modele = $data['modele'];
         $annee = $data['annee'];
         $carburant = $data['carburant'];
-        $minPrix = $data['minPrix'];
-        $maxPrix = $data['maxPrix'];
-        print_r($data);
-
+        $minPrix = intval($data['minPrix']);
+        $maxPrix = intval($data['maxPrix']);
+        $criteres = [];
 
         // Trie A Effectuer
 
-        $criteres = [];
-
-        if ($marque !== 'null') {
-            $criteres['marque'] = $marque;
-        }
-        if ($modele !== 'null') {
-            $criteres['modele'] = $modele;
-        }
-        if ($annee !== 'null') {
-            $criteres['annee'] = $annee;
-        }
-        if ($carburant !== 'null') {
-            $criteres['typeCarburant'] = $carburant;
-        }
-
+        $conditions = [
+            'marque' => $marque,
+            'modele' => $modele,
+            'typeCarburant' => $carburant,
+        ];
         
-
+        foreach ($conditions as $colonne => $valeur) {
+            if ($valeur !== 'null') {
+                $criteres[$colonne] = $valeur;
+            }
+        }
+        
         $vehicules = $vehiculesRepository->findBy($criteres);
+
+        // Génération de la Réponse Json
 
         $jsonVehicule = [];
         foreach ($vehicules as $ve) {
             $jsonVehicule[] = [
                 'id' => $ve->getId(),
                 'marque' => $ve->getMarque(),
+                'modele' => $ve->getModele(),
+                'annee' => $ve->getAnnee()->format('Y-m'),
             ];
         }
 

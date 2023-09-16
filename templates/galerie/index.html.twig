@@ -3,7 +3,7 @@
 {% block title %}G.Parrot Galerie{% endblock %}
 
 {% block stylesheets %}
-.ctnr-galerie {
+#ctnr-galerie {
     min-height: 80vh; 
 }
 {% endblock %}
@@ -74,12 +74,12 @@
         <div class="d-flex justify-content-center mt-2">
 
             <section class="d-flex flex-column">
-                <label for="prix-select-min" class="text-center">Prix minimum</label>
+                <label for="prix-select-min" class="text-center" value="null">Prix minimum</label>
                 <input name="prix-select-mini" id="prix-select-min" placeholder="800">
             </section>
 
             <section class="d-flex flex-column">
-                <label for="prix-select-max" class="text-center">Prix maximum</label>
+                <label for="prix-select-max" class="text-center" value="null">Prix maximum</label>
                 <input name="prix-select-maxi" id="prix-select-max" placeholder="7500">
             </section>
 
@@ -96,8 +96,8 @@
 
 <h1 class="text-center">Nos Véhicules à vendre</h1>
 
-<div class="container ctnr-galerie">
-    <div class="row">
+<div class="container" id="ctnr-galerie">
+    <div class="row" id="ctnr-js">
     {% for v in vehiculeInfo %}
         <div class="col-12 col-md-6 col-lg-4 mb-3">
             <div class="card">
@@ -109,7 +109,7 @@
                     <div class="d-flex">
                         <div class="col-6">
                             <p >{{ v.typeCarburant }}</p>
-                            <p>{{ v.kilometres }} Km<p>
+                            <p>{{ v.kilometres }} Km</p>
                         </div>
                         <div class="col-6">
                             <a href="#" class="btn btn-primary float-end">Plus d'Info</a>
