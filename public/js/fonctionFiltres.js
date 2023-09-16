@@ -11,7 +11,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const conteneur = document.getElementById('ctnr-js');
 
-
     // Click Button
     button.addEventListener('click', () => {
         if (marque.value !== 'null' || modele.value !== 'null' || carburant.value !== 'null') {
@@ -25,7 +24,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 minPrix: minPrix.value,
                 maxPrix: maxPrix.value
             };
-    
+
+            
             // Requete
             var xhr = new XMLHttpRequest();
             xhr.open('POST', '/data/filtres', true);
@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', function () {
                                                 <p>${v.kilometres} Km</p>
                                             </div>
                                             <div class="col-6">
-                                                <a href="#" class="btn btn-primary float-end">Plus d'Info</a>
+                                                <a href="galerie/${v.id}" class="btn btn-primary float-end">Plus d'Info</a>
                                             </div>
                                         </div>
                                     </div>
