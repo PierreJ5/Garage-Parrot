@@ -12,7 +12,7 @@ use Doctrine\ORM\EntityManagerInterface;
 
 class EditUsersController extends AbstractController
 {
-    #[Route('/admin/dashboard/editutilisateurs', name: 'app_edit_users')]
+    #[Route('/admin/dashboard/edituser', name: 'app_edit_users')]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
         $dataUsers = $entityManager->getRepository(Utilisateur::class)->findAll();
