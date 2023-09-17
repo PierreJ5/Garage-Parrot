@@ -53,6 +53,9 @@ class DataFiltresController extends AbstractController
                 'id' => $ve->getId(),
                 'marque' => $ve->getMarque(),
                 'modele' => $ve->getModele(),
+                'chevaux' => $ve->getChevaux(), 
+                'carburant' => $ve->getTypeCarburant(),
+                'kilometres' => $ve->getKilometres(),
                 'annee' => $ve->getAnnee()->format('Y-m'),
             ];
         }

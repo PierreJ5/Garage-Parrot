@@ -5,9 +5,35 @@
     <title>Galerie - {{ vehicule.id }}</title>
 </head>
 <body>
-    <h1>{{ vehicule.marque }} - {{ vehicule.modele }}</h1>
-    <p> {{ vehicule. id}} <p>
     <a href={{ path('app_galerie') }}>Retour au Site</a>
+
+    <h1>{{ vehicule.marque }} - {{ vehicule.modele }}</h1>
+    <p>Place pour IMAGES</p>
+    <p>Année: {{ vehicule.annee|date('Y-m') }} <p>
+    <p>Kilométrage: {{ vehicule.kilometres }} <p>
+    <p>Type de Carburant: {{ vehicule.typeCarburant }} <p>
+    <p>prix: {{ vehicule.prix }} €<p>
+
+
+    <p>Nombres de portes : {{ vehicule.infoData.nbPortes }}<p>
+    <p>Places Assises : {{ vehicule.infoData.nbSieges }}<p>
+    <p>ABS : {% if vehicule.infoData.abs %}OUI{% else %}NON{% endif %}<p>
+    <p>ESP : {% if vehicule.infoData.esp %}OUI{% else %}NON{% endif %}<p>
+    <p>Propulsion/Traction : {{ vehicule.infoData.propTrac }}<p>
+    <p>Roue Motrices : {{ vehicule.infoData.roueMotrices }}<p>
+    <p>Diréction Assistée : {% if vehicule.infoData.dirAssistee %}OUI{% else %}NON{% endif %}<p>
+    <p>Anti Brouillard Avant : {% if vehicule.infoData.abAv %}OUI{% else %}NON{% endif %}<p>
+    <p>Anti Brouillard Arrière : {% if vehicule.infoData.abAr %}OUI{% else %}NON{% endif %}<p>
+    <p>Wifi : {% if vehicule.infoData.wifi %}OUI{% else %}NON{% endif %}<p>
+    <p>Bluetooth : {% if vehicule.infoData.bluetooth %}OUI{% else %}NON{% endif %}<p>
+    <p>Régulateur de Vitesse : {% if vehicule.infoData.regVitesse %}OUI{% else %}NON{% endif %}<p>
+    <p>limitateur de Vitesse : {% if vehicule.infoData.limVitesse %}OUI{% else %}NON{% endif %}<p>
+    <p>Correcteur de Trajectoir : {% if vehicule.infoData.correcTraj %}OUI{% else %}NON{% endif %}<p>
+    <p>Aide au Stationnement : {% if vehicule.infoData.aideParking %}OUI{% else %}NON{% endif %}<p>
+    <p>Notes du Vendeur : {{ vehicule.infoData.avisVendeur }}<p>
+    </br>
+    <p>Ce véhicule vous intérèsse ?</p>
+    <a href="">Contactez-nous</a>
 
 </body>
 </html>

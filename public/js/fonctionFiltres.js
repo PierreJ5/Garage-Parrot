@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Click Button
     button.addEventListener('click', () => {
+        console.log('ok')
         if (marque.value !== 'null' || modele.value !== 'null' || carburant.value !== 'null') {
 
             // Préparation des variables à envoyer
@@ -40,6 +41,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     var contenuHTML = '';
                     // Pour chaque Objet JSON en Réponse
                     responseData.forEach(function(v) {
+                        
                         //Construction carte HTML et Ajout au contenu
                         contenuHTML += `
                             <div class="col-12 col-md-6 col-lg-4 mb-3">
@@ -51,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function () {
                                         <p>Chevaux : ${v.chevaux}</p>
                                         <div class="d-flex">
                                             <div class="col-6">
-                                                <p>${v.typeCarburant}</p>
+                                                <p>${v.carburant}</p>
                                                 <p>${v.kilometres} Km</p>
                                             </div>
                                             <div class="col-6">
