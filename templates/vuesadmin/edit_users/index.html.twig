@@ -7,6 +7,49 @@
 <body>
     <h1>Edition des Utilisateurs</h1>
     <a href= "{{ path('app_admin') }}">Retour au Dashboard</a>
+        <div>
+        {% for data in dataUsers %}
+            <p>{{ data.id }} - {{ data.email }}</p>
+            <ul>
+                {% for role in data.roles %}
+                    <li>{{ role }}</li>
+                {% endfor %}
+            </ul>
+            <button class="delB" id="{{ data.id }}">Supprimer</button>
+            <a href= {{ path('app_delete_user', {'id': data.id} )}} style='display: none;' class="zoneConfirm" id="z{{ data.id }}">Confirmer</a>
+        {% endfor %}
+        </div>
 
+    <script>
+        var zoneConfirm = document.querySelectorAll('.zoneConfirm')
+        var btn = document.querySelectorAll('.delB')
+
+        btn.forEach(b => {
+            b.addEventListener('click', () => {
+                var userID = b.id;
+                var zone = document.getElementById(`z${b.id}`)
+                console.log(zone)
+                zone.style.display = 'block';
+
+                zone.addEventListener('click', () => {
+                    var zoneID = zone.id
+                    var valeurToSend = zoneID.slice(1)
+                    var xhr = new XMLHttpRequest();
+                    xhr.open('POST', '/admin/dashboard/editutilisateurs', true);
+                    xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
+                    xhr.onload = function () {
+                        // Traitement de la Réponse
+                        if (xhr.status === 200) {
+                            console.log('recu')
+                        }else {
+                            console.log('error')
+                        }
+                    }
+                    xhr.send(JSON.stringify(valeurToSend));
+                })
+            })
+        });
+
+    </script>
 </body>
 </html>

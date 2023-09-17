@@ -20,9 +20,6 @@ class EditHorairesController extends AbstractController
     public function new(Request $request, EntityManagerInterface $entityManager, SessionInterface $session): Response
     {
 
-        $dataRequest = $entityManager->getRepository(HorairesGarage::class)->findAll();
-
-
         $task = new HorairesGarage();
 
         $form = $this->createFormBuilder($task)
@@ -68,7 +65,6 @@ class EditHorairesController extends AbstractController
             }
         return $this->render('vuesadmin/edit_horaires/index.html.twig', [
             'form' => $form,
-            'dataR' => $dataRequest,
         ]);
     }
 }

@@ -3,16 +3,46 @@
 namespace App\Controller\AdminController;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Entity\Utilisateur;
+use App\Repository\UtilisateurRepository;
+use Doctrine\ORM\EntityManagerInterface;
 
 class EditUsersController extends AbstractController
 {
     #[Route('/admin/dashboard/editutilisateurs', name: 'app_edit_users')]
-    public function index(): Response
+    public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
+        $dataUsers = $entityManager->getRepository(Utilisateur::class)->findAll();
+
+
+        $filtre = [];
+        foreach ($dataUsers as $user) {
+            if (!in_array('ROLE_ADMIN', $user->getRoles())) {
+                $filtre[] = $user;
+            }
+        }
+
         return $this->render('vuesadmin/edit_users/index.html.twig', [
-            'controller_name' => 'EditUsersController',
+            'dataUsers' => $filtre,
         ]);
     }
+
+
+    #[Route('/admin/dashboard/editutilisateurs/delete/{id}', name: 'app_delete_user')]
+    public function deleteUser(Request $request, EntityManagerInterface $entityManager, int $id): Response
+    {
+    // Récupérez l'utilisateur à supprimer 
+    $user = $entityManager->getRepository(Utilisateur::class)->find($id);
+
+        print_r($user);
+    $entityManager->remove($user);
+    $entityManager->flush();
+
+
+    return $this->redirectToRoute('app_edit_users');
 }
+}
+
