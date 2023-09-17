@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const marque = document.getElementById('marque-select-list');
     const modele = document.getElementById('modele-select-list');
-    const annee = document.getElementById('annee-select-list');
+
     const carburant = document.getElementById('carburant-select-list');
     const minPrix = document.getElementById('prix-select-min');
     const maxPrix = document.getElementById('prix-select-max');
@@ -13,18 +13,17 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Click Button
     button.addEventListener('click', () => {
-        console.log('ok')
-        if (marque.value !== 'null' || modele.value !== 'null' || carburant.value !== 'null') {
+        if (marque.value !== 'null' || modele.value !== 'null' || carburant.value !== 'null' || minPrix.value !== "" || maxPrix.value !== "") {
 
             // Préparation des variables à envoyer
             var dataFiltres = {
                 marque: marque.value,
                 modele: modele.value,
-                annee: annee.value,
                 carburant: carburant.value,
                 minPrix: minPrix.value,
                 maxPrix: maxPrix.value
             };
+            console.log(dataFiltres)
 
             
             // Requete
@@ -35,6 +34,7 @@ document.addEventListener('DOMContentLoaded', function () {
             xhr.onload = function () {
                 // Traitement de la Réponse
                 if (xhr.status === 200) {
+                    console.log('requete effectuer')
                     // Traitement Réponse Format JSON
                     var responseData = JSON.parse(xhr.responseText);
                     
@@ -55,6 +55,7 @@ document.addEventListener('DOMContentLoaded', function () {
                                             <div class="col-6">
                                                 <p>${v.carburant}</p>
                                                 <p>${v.kilometres} Km</p>
+                                                <p>${v.prix} €</p>
                                             </div>
                                             <div class="col-6">
                                                 <a href="galerie/${v.id}" class="btn btn-primary float-end">Plus d'Info</a>

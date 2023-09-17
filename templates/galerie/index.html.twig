@@ -46,16 +46,6 @@
             </section>
 
             <section class="d-inline-flex">
-                <label for="annee-select-list"></label>
-
-                <select name="annee-select" id="annee-select-list">
-                    <option value="null">Année du Véhicule</option>
-                    {% for i in 2023..1960 %}
-                    <option value="{{ i }}">{{ i }}</option>
-                    {% endfor %}
-                </select>
-            </section>
-            <section class="d-inline-flex">
                 <label for="carburant-select-list"></label>
 
                 <select name="carburant-select" id="carburant-select-list">
@@ -110,6 +100,7 @@
                         <div class="col-6">
                             <p >{{ v.typeCarburant }}</p>
                             <p>{{ v.kilometres }} Km</p>
+                            <p>{{ v.prix }} €</p>
                         </div>
                         <div class="col-6">
                             <a href="/galerie/{{ v.id }}" class="btn btn-primary float-end">Plus d'Info</a>
