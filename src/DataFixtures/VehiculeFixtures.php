@@ -1,4 +1,14 @@
 <?php
+/* 
+
+
+
+//////////////////
+
+Fixture Abandonnée
+
+////////////////
+
 
 namespace App\DataFixtures;
 
@@ -6,9 +16,19 @@ use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use App\Entity\Vehicules;
 use App\Entity\InfoVehicules;
+use Symfony\Component\Filesystem\Filesystem;
+use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
+use Symfony\Component\HttpKernel\KernelInterface;
 
 class VehiculeFixtures extends Fixture
 {
+    private $parameterBag;
+
+    public function __construct(ParameterBagInterface $parameterBag, Filesystem $filesystem)
+    {
+        $this->parameterBag = $parameterBag;
+        $this->filesystem = $filesystem;
+    }
     public function load(ObjectManager $manager): void
     {
         $voiture = new Vehicules();
@@ -41,9 +61,26 @@ class VehiculeFixtures extends Fixture
         $infoV->setAvisVendeur('Trés bon véhicule. Une bonne occasion');
 
         $voiture->setInfoData($infoV);
+
+        // Créer le dossier
+        $vehiculeId = $voiture->getId();
+        $uploadPath = $this->parameterBag->get('kernel.project_dir') . '/public/images/' . $vehiculeId;
+        $this->filesystem->mkdir($uploadPath);
+
+        // Prendre image template par defaut
+        $sourceImagePath = $this->parameterBag->get('kernel.project_dir') . '/public/images/Vehicules/defaut.jpg';
+        $destinationImagePath = $uploadPath . '/defaut.jpg';
+        $this->filesystem->copy($sourceImagePath, $destinationImagePath);
+
+        // Renommer pour Correspondre aux demandes de l'affichage
+        $nouveauNomImage = $vehiculeId;
+        $nouveauPathImage = $uploadPath . '/' . $nouveauNomImage;
+        $this->filesystem->rename($destinationImagePath, $nouveauPathImage);
         
         $manager->persist($voiture);
         $manager->persist($infoV);
+
+        ////////////////////////////////////////////////////
 
         $voiture2 = new Vehicules();
         $voiture2->setMarque('Dacia');
@@ -75,8 +112,25 @@ class VehiculeFixtures extends Fixture
 
         $voiture2->setInfoData($infoV2);
         
+        // Créer le dossier
+        $vehiculeId = $voiture2->getId();
+        $uploadPath = $this->parameterBag->get('kernel.project_dir') . '/public/images/' . $vehiculeId;
+        $this->filesystem->mkdir($uploadPath);
+
+        // Prendre image template par defaut
+        $sourceImagePath = $this->parameterBag->get('kernel.project_dir') . '/public/images/Vehicules/defaut.jpg';
+        $destinationImagePath = $uploadPath . '/defaut.jpg';
+        $this->filesystem->copy($sourceImagePath, $destinationImagePath);
+
+        // Renommer pour Correspondre aux demandes de l'affichage
+        $nouveauNomImage = $vehiculeId;
+        $nouveauPathImage = $uploadPath . '/' . $nouveauNomImage;
+        $this->filesystem->rename($destinationImagePath, $nouveauPathImage);
+        
         $manager->persist($voiture2);
         $manager->persist($infoV2);
+
+        /////////////////////////////////////////////////
 
         $voiture3 = new Vehicules();
         $voiture3->setMarque('BMW');
@@ -108,8 +162,26 @@ class VehiculeFixtures extends Fixture
 
         $voiture3->setInfoData($infoV3);
 
+        
+        // Créer le dossier
+        $vehiculeId = $voiture3->getId();
+        $uploadPath = $this->parameterBag->get('kernel.project_dir') . '/public/images/' . $vehiculeId;
+        $this->filesystem->mkdir($uploadPath);
+
+        // Prendre image template par defaut
+        $sourceImagePath = $this->parameterBag->get('kernel.project_dir') . '/public/images/Vehicules/defaut.jpg';
+        $destinationImagePath = $uploadPath . '/defaut.jpg';
+        $this->filesystem->copy($sourceImagePath, $destinationImagePath);
+
+        // Renommer pour Correspondre aux demandes de l'affichage
+        $nouveauNomImage = $vehiculeId;
+        $nouveauPathImage = $uploadPath . '/' . $nouveauNomImage;
+        $this->filesystem->rename($destinationImagePath, $nouveauPathImage);
+
         $manager->persist($voiture3);
         $manager->persist($infoV3);
+
+        //////////////////////////////////////////////////
 
         $voiture4 = new Vehicules();
         $voiture4->setMarque('Nissan');
@@ -141,8 +213,26 @@ class VehiculeFixtures extends Fixture
 
         $voiture4->setInfoData($infoV4);
 
+        
+        // Créer le dossier
+        $vehiculeId = $voiture4->getId();
+        $uploadPath = $this->parameterBag->get('kernel.project_dir') . '/public/images/' . $vehiculeId;
+        $this->filesystem->mkdir($uploadPath);
+
+        // Prendre image template par defaut
+        $sourceImagePath = $this->parameterBag->get('kernel.project_dir') . '/public/images/Vehicules/defaut.jpg';
+        $destinationImagePath = $uploadPath . '/defaut.jpg';
+        $this->filesystem->copy($sourceImagePath, $destinationImagePath);
+
+        // Renommer pour Correspondre aux demandes de l'affichage
+        $nouveauNomImage = $vehiculeId;
+        $nouveauPathImage = $uploadPath . '/' . $nouveauNomImage;
+        $this->filesystem->rename($destinationImagePath, $nouveauPathImage);
+
         $manager->persist($voiture4);
         $manager->persist($infoV4);
+
+        //////////////////////////////////////////////
 
         $voiture5 = new Vehicules();
         $voiture5->setMarque('Ford');
@@ -173,9 +263,27 @@ class VehiculeFixtures extends Fixture
         $infoV5->setAvisVendeur('Rare Occasion');
 
         $voiture5->setInfoData($infoV5);
+
+        
+        // Créer le dossier
+        $vehiculeId = $voiture5->getId();
+        $uploadPath = $this->parameterBag->get('kernel.project_dir') . '/public/images/' . $vehiculeId;
+        $this->filesystem->mkdir($uploadPath);
+
+        // Prendre image template par defaut
+        $sourceImagePath = $this->parameterBag->get('kernel.project_dir') . '/public/images/Vehicules/defaut.jpg';
+        $destinationImagePath = $uploadPath . '/defaut.jpg';
+        $this->filesystem->copy($sourceImagePath, $destinationImagePath);
+
+        // Renommer pour Correspondre aux demandes de l'affichage
+        $nouveauNomImage = $vehiculeId;
+        $nouveauPathImage = $uploadPath . '/' . $nouveauNomImage;
+        $this->filesystem->rename($destinationImagePath, $nouveauPathImage);
         
         $manager->persist($voiture5);
         $manager->persist($infoV5);
+
+        ///////////////////////////////////////////
 
         $voiture6 = new Vehicules();
         $voiture6->setMarque('Opel');
@@ -206,6 +314,22 @@ class VehiculeFixtures extends Fixture
         $infoV6->setAvisVendeur('Trés bon véhicule. Une bonne occasion');
 
         $voiture6->setInfoData($infoV6);
+
+        
+        // Créer le dossier
+        $vehiculeId = $voiture6->getId();
+        $uploadPath = $this->parameterBag->get('kernel.project_dir') . '/public/images/' . $vehiculeId;
+        $this->filesystem->mkdir($uploadPath);
+
+        // Prendre image template par defaut
+        $sourceImagePath = $this->parameterBag->get('kernel.project_dir') . '/public/images/Vehicules/defaut.jpg';
+        $destinationImagePath = $uploadPath . '/defaut.jpg';
+        $this->filesystem->copy($sourceImagePath, $destinationImagePath);
+
+        // Renommer pour Correspondre aux demandes de l'affichage
+        $nouveauNomImage = $vehiculeId;
+        $nouveauPathImage = $uploadPath . '/' . $nouveauNomImage;
+        $this->filesystem->rename($destinationImagePath, $nouveauPathImage);
         
         $manager->persist($voiture6);
         $manager->persist($infoV6);
@@ -213,3 +337,6 @@ class VehiculeFixtures extends Fixture
         $manager->flush();
     }
 }
+
+
+*/

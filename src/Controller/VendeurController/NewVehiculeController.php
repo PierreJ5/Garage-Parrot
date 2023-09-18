@@ -16,6 +16,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use DateTime;
 
 
@@ -29,6 +30,13 @@ class NewVehiculeController extends AbstractController
         $infoVehicules = new InfoVehicules();
 
         $form = $this->createFormBuilder()
+            ->add('images', FileType::class, [
+                'label' => 'Images (JPG, JPEG, PNG files)',
+                'multiple' => false, 
+                'mapped' => false, 
+                'required' => true, 
+            ])
+
             ->add('marque', TextType::class)
             ->add('modele', TextType::class)
             ->add('prix', TextType::class)
@@ -152,6 +160,7 @@ class NewVehiculeController extends AbstractController
 
             if ($form->isSubmitted() && $form->isValid()) {
                 $formData = $form->getData();
+                $imagePrincipal = $request->files->get('form')['images'];
 
                 $dateActuel = new dateTime();
     
@@ -191,9 +200,13 @@ class NewVehiculeController extends AbstractController
                 $vehiculeId = $vehicules->getId();
 
                 $uploadPath = $this->getParameter('kernel.project_dir') . '/public/images/' . $vehiculeId;
+
                 if (!file_exists($uploadPath)) {
                     mkdir($uploadPath);
                 }
+                
+                $nomImage = $vehiculeId . '.' . $imagePrincipal->guessExtension();
+                $imagePrincipal->move($uploadPath, $nomImage);
                 
 
                 return $this->redirectToRoute('app_vehicule_new', [

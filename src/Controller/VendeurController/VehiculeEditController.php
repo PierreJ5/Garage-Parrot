@@ -14,7 +14,8 @@ use App\Repository\VehiculesRepository;
 class VehiculeEditController extends AbstractController
 {
     #[Route('/vendeur/dashboard/vehicule', name: 'app_vehicule_edit')]
-    public function index(EntityManagerInterface $entityManager): Response {
+    public function index(EntityManagerInterface $entityManager): Response 
+    {
         $vehicules = $entityManager->getRepository(Vehicules::class)->findAll();
     
         return $this->render('vuesVendeur/vehicule_edit/index.html.twig', [
@@ -30,9 +31,8 @@ class VehiculeEditController extends AbstractController
 
         // SUpprimer le dossier Stockage Images
         $uploadPath = $this->getParameter('kernel.project_dir') . '/public/images/' . $vehicule->getId();
-        if (file_exists($uploadPath)) {
-            rmdir($uploadPath);
-        }
+
+        $this->deleteDirectory($uploadPath);
 
         // Supprimer le Véhicule
         $entityManager->remove($vehicule);
@@ -40,6 +40,19 @@ class VehiculeEditController extends AbstractController
 
 
         return $this->redirectToRoute('app_vehicule_edit');
+    }
+
+
+    // Efficacité a vérifier ->
+    private function deleteDirectory($dirPath)
+    {
+        if (is_dir($dirPath)) {
+            $files = glob($dirPath . '/*');
+            foreach ($files as $file) {
+                is_dir($file) ? $this->deleteDirectory($file) : unlink($file);
+            }
+            rmdir($dirPath);
+        }
     }
 }
 
