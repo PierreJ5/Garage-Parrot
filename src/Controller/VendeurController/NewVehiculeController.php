@@ -186,6 +186,14 @@ class NewVehiculeController extends AbstractController
             
                 $entityManager->persist($vehicules);
                 $entityManager->flush();
+
+                // Création des Fichiers
+                $vehiculeId = $vehicules->getId();
+
+                $uploadPath = $this->getParameter('kernel.project_dir') . '/public/images/' . $vehiculeId;
+                if (!file_exists($uploadPath)) {
+                    mkdir($uploadPath);
+                }
                 
 
                 return $this->redirectToRoute('app_vehicule_new', [
