@@ -34,10 +34,9 @@ class EditUsersController extends AbstractController
     #[Route('/admin/dashboard/editutilisateurs/delete/{id}', name: 'app_delete_user')]
     public function deleteUser(Request $request, EntityManagerInterface $entityManager, int $id): Response
     {
-    // Récupérez l'utilisateur à supprimer 
+    // Récupérer l'utilisateur à supprimer 
     $user = $entityManager->getRepository(Utilisateur::class)->find($id);
 
-        print_r($user);
     $entityManager->remove($user);
     $entityManager->flush();
 

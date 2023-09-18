@@ -15,16 +15,54 @@
 <body>
     <h1>Edition des véhicules</h1>
     <a href= "{{ path('app_vendeur') }}">Retour au Dashboard</a>
-    <a href= "{{ path ('app_vehicule_new') }}">Nouveau Véhicule</a>
+    <a href= "{{ path('app_vehicule_new') }}">Nouveau Véhicule</a>
 
     <div class="contenu">
         {% for v in vehicules %}
         <section>
-            <p>id: {{ v.id }} - {{ v.marque }} {{ v.modele }}</p>
-            <p>{{ v.prix }} euro - type: {{ v.typeCarburant }} - {{ v.chevaux }} chvx</p>
-            <button class="buttonDelete" id="{{ v.id }}">Supprimer</button>
+            <p>ID: {{ v.id }} --- {{ v.marque }} {{ v.modele }}</p>
+            <p>type: {{ v.typeCarburant }} --- {{ v.chevaux }} chvx</p>
+            <p>Date d'Ajout : {{ v.dateAjout|date('d-m-Y') }}</p>
+            <p>Prix : {{ v.prix }}</p>
+            <button class="delB" id="{{ v.id }}">Supprimer</button>
+            <a href= {{ path('app_delete_vehicule', {'id': v.id} )}} style='display: none;' class="zoneConfirm" id="z{{ v.id }}">Confirmer</a>
         </section>  
         {% endfor %}
     </div>
+
+
+
+    <script>
+        var zoneConfirm = document.querySelectorAll('.zoneConfirm')
+        var btn = document.querySelectorAll('.delB')
+
+        btn.forEach(b => {
+            b.addEventListener('click', () => {
+                var userID = b.id;
+                var zone = document.getElementById(`z${b.id}`)
+                console.log(zone)
+                zone.style.display = 'block';
+
+                zone.addEventListener('click', () => {
+                    var zoneID = zone.id
+                    var valeurToSend = zoneID.slice(1)
+                    var xhr = new XMLHttpRequest();
+                    xhr.open('POST', '/vendeur/dashboard/vehicule', true);
+                    xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
+                    xhr.onload = function () {
+                        // Traitement de la Réponse
+                        if (xhr.status === 200) {
+                            console.log('recu')
+                        }else {
+                            console.log('error')
+                        }
+                    }
+                    xhr.send(JSON.stringify(valeurToSend));
+                })
+            })
+        });
+
+    </script>
+
 </body>
 </html>
