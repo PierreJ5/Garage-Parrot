@@ -3,11 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <title>Edition des Véhicules</title>
+    <style>
+        section {
+            border: 1px solid black;
+            margin-bottom: 1rem;
+            padding-left: 1rem;
+            padding-bottom: 1rem;
+        }
+    </style>
 </head>
 <body>
     <h1>Edition des véhicules</h1>
     <a href= "{{ path('app_vendeur') }}">Retour au Dashboard</a>
+    <a href= "{{ path ('app_vehicule_new') }}">Nouveau Véhicule</a>
 
-
+    <div class="contenu">
+        {% for v in vehicules %}
+        <section>
+            <p>id: {{ v.id }} - {{ v.marque }} {{ v.modele }}</p>
+            <p>{{ v.prix }} euro - type: {{ v.typeCarburant }} - {{ v.chevaux }} chvx</p>
+            <button class="buttonDelete" id="{{ v.id }}">Supprimer</button>
+        </section>  
+        {% endfor %}
+    </div>
 </body>
 </html>
