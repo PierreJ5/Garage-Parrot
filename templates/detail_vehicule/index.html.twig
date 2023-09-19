@@ -3,38 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <title>Galerie - {{ vehicule.id }}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <style>
+    .notes {
+        margin-top: 0.5rem;
+        border: 1px solid black;
+        padding-top: 1rem;
+    }
+    .section {
+        border-bottom: 1px solid black;
+        margin-top: 1rem;
+
+    }
+    h3 {
+        border-bottom: 1px solid black;
+        padding-bottom: 1rem;
+    }
+    </style>
 </head>
 <body>
+<div class='container-fluid'>
     <a href={{ path('app_galerie') }}>Retour au Site</a>
 
     <h1>{{ vehicule.marque }} - {{ vehicule.modele }}</h1>
-    <p>Place pour IMAGES</p>
-    <p>Année: {{ vehicule.annee|date('Y-m') }} <p>
-    <p>Kilométrage: {{ vehicule.kilometres }} <p>
-    <p>Type de Carburant: {{ vehicule.typeCarburant }} <p>
-    <p>prix: {{ vehicule.prix }} €<p>
+
+    <div class='row d-flex'>
+        <div class='col-12 col-lg-6 d-flex content-center mx-auto'>
+            <img class='img-fluid img-thumbnail' src={{ asset('images/' ~ vehicule.id ~ '/' ~ vehicule.id ~ '.jpg') }}>
+        </div>
+    </div>
+
+    <div class='row'>
+        <section class='col-12 col-lg-6 mx-auto text-center'>
+            <h3 class='mb-4'>prix: {{ vehicule.prix }} €</h3>
+            <div class='section'>
+                <p>Type de Carburant: {{ vehicule.typeCarburant }} </p>
+                <p>Kilométrage: {{ vehicule.kilometres }} Kms </p>
+                <p>Année: {{ vehicule.annee|date('Y-m') }} </p>
+                <p>Propulsion/Traction : {{ vehicule.infoData.propTrac }}</p>
+            </div>
+
+            <div class='section'>
+                <p>Nombres de portes : {{ vehicule.infoData.nbPortes }}</p>
+                <p>Places Assises : {{ vehicule.infoData.nbSieges }}<p>
+                <p>Roue Motrices : {{ vehicule.infoData.roueMotrices }}</p>
+                <p>ABS : {% if vehicule.infoData.abs %}OUI{% else %}NON{% endif %}</p>
+                <p>ESP : {% if vehicule.infoData.esp %}OUI{% else %}NON{% endif %}</p>
+                <p>Diréction Assistée : {% if vehicule.infoData.dirAssistee %}OUI{% else %}NON{% endif %}</p>
+            </div>
+
+            <div class=''>
+                <h4>Options</h4>
+                <p>Wifi : {% if vehicule.infoData.wifi %}OUI{% else %}NON{% endif %}</p>
+                <p>Bluetooth : {% if vehicule.infoData.bluetooth %}OUI{% else %}NON{% endif %}</p>
+                <p>Régulateur de Vitesse : {% if vehicule.infoData.regVitesse %}OUI{% else %}NON{% endif %}</p>
+                <p>Limitateur de Vitesse : {% if vehicule.infoData.limVitesse %}OUI{% else %}NON{% endif %}</p>
+                <p>Correcteur de Trajectoir : {% if vehicule.infoData.correcTraj %}OUI{% else %}NON{% endif %}</p>
+                <p>Aide au Stationnement : {% if vehicule.infoData.aideParking %}OUI{% else %}NON{% endif %}</p>
+                <p>Anti Brouillard Avant : {% if vehicule.infoData.abAv %}OUI{% else %}NON{% endif %}</p>
+                <p>Anti Brouillard Arrière : {% if vehicule.infoData.abAr %}OUI{% else %}NON{% endif %}</p>
+            </div>
+
+            <div class='notes'>
+                <h4>Notes du Vendeur:</h4>
+                <p>{{ vehicule.infoData.avisVendeur }}</p>
+            </div>
+
+            <p>Ce véhicule vous intérèsse ?</p>
+            <a class='fs-5' href={{ path('app_contact') }}>Contactez-nous</a>
+        </section>
+    </div>
+</div>
 
 
-    <p>Nombres de portes : {{ vehicule.infoData.nbPortes }}<p>
-    <p>Places Assises : {{ vehicule.infoData.nbSieges }}<p>
-    <p>ABS : {% if vehicule.infoData.abs %}OUI{% else %}NON{% endif %}<p>
-    <p>ESP : {% if vehicule.infoData.esp %}OUI{% else %}NON{% endif %}<p>
-    <p>Propulsion/Traction : {{ vehicule.infoData.propTrac }}<p>
-    <p>Roue Motrices : {{ vehicule.infoData.roueMotrices }}<p>
-    <p>Diréction Assistée : {% if vehicule.infoData.dirAssistee %}OUI{% else %}NON{% endif %}<p>
-    <p>Anti Brouillard Avant : {% if vehicule.infoData.abAv %}OUI{% else %}NON{% endif %}<p>
-    <p>Anti Brouillard Arrière : {% if vehicule.infoData.abAr %}OUI{% else %}NON{% endif %}<p>
-    <p>Wifi : {% if vehicule.infoData.wifi %}OUI{% else %}NON{% endif %}<p>
-    <p>Bluetooth : {% if vehicule.infoData.bluetooth %}OUI{% else %}NON{% endif %}<p>
-    <p>Régulateur de Vitesse : {% if vehicule.infoData.regVitesse %}OUI{% else %}NON{% endif %}<p>
-    <p>limitateur de Vitesse : {% if vehicule.infoData.limVitesse %}OUI{% else %}NON{% endif %}<p>
-    <p>Correcteur de Trajectoir : {% if vehicule.infoData.correcTraj %}OUI{% else %}NON{% endif %}<p>
-    <p>Aide au Stationnement : {% if vehicule.infoData.aideParking %}OUI{% else %}NON{% endif %}<p>
-    <p>Notes du Vendeur : {{ vehicule.infoData.avisVendeur }}<p>
-    </br>
-    <p>Ce véhicule vous intérèsse ?</p>
-    <a href="">Contactez-nous</a>
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
 </html>
 

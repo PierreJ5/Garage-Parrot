@@ -11,8 +11,6 @@ services:
         tags: ['doctrine.fixture.orm']
     App\DataFixtures\ServicesSFixtures:
         tags: ['doctrine.fixture.orm']
-    App\DataFixtures\VehiculeFixtures:
-        tags: ['doctrine.fixture.orm']
     App\DataFixtures\UserFixtures:
         tags: ['doctrine.fixture.orm']
     # default configuration for services in *this* file

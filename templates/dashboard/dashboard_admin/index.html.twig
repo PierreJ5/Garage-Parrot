@@ -1,18 +1,24 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>Dashboard Admin</title>
-</head>
-<body>
-    <h1>Dashboard Admin</h1>
-    <a href="{{ path('app_edit_horaires') }}">Editer les Horaires</a>
-    <a href="{{ path('app_edit_services') }}">Modifier les Services</a>
-    <a href="{{ path('app_edit_users') }}">Editer les Utilisateurs</a>
+{% extends 'basedashboard.html.twig' %}
 
+{% block title %}
+Dashboard Admin
+{% endblock %}
+
+{% block stylesheets %}
+
+{% endblock %}
+
+{% block body %}
+    <h1>Dashboard Admin</h1>
     <a href="{{ path('app_logout') }}" class="btn btn-primary">Se Déconnecter</a>
 
-</body>
-</html>
+    <section>
+        <a href="{{ path('app_edit_horaires') }}">Editer les Horaires</a>
+        <a href="{{ path('app_edit_services') }}"><s>Modifier les Services</s></a>
+        <a href="{{ path('app_edit_users') }}">Editer les Utilisateurs</a>
+    </section>
+
+{% endblock %}
+
 
 

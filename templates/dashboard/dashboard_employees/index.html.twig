@@ -1,16 +1,20 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>Dashboard Vendeur</title>
-</head>
-<body>
-    <h1>Dashboard Vendeur</h1>
-    <a href="{{ path('app_vehicule_edit') }}">Edition des Véhicules</a>
-    <a href="{{ path('app_ajout_avis') }}">Ajouter Témoignage Client</a>
-    <a href="{{ path('app_logout') }}" class="btn btn-primary">Se Déconnecter</a>
+{% extends 'basedashboard.html.twig' %}
 
-</body>
-</html>
+{% block title %}
+Dashboard Vendeur
+{% endblock %}
+
+{% block stylesheets %}
+
+{% endblock %}
+
+{% block body %}
+    <h1>Dashboard Vendeur</h1>
+    <a href="{{ path('app_logout') }}" class="btn btn-primary">Se Déconnecter</a>
+    <section>
+        <a href="{{ path('app_vehicule_edit') }}">Edition des Véhicules</a>
+        <a href="{{ path('app_ajout_avis') }}"><s>Ajouter Témoignage Client</s></a>
+    </section>
+{% endblock %}
 
 

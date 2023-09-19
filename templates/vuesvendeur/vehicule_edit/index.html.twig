@@ -9,25 +9,59 @@
             margin-bottom: 1rem;
             padding-left: 1rem;
             padding-bottom: 1rem;
+            background: lightgrey;
         }
+        a, a:visited, button {
+            text-decoration: none;
+            color: black;
+            border: 1px solid black;
+            background: lightgrey;
+            padding: 0.2rem;
+        }
+        .contenu {
+            margin-top: 2rem;
+            background: grey;
+            padding-top: 1rem;
+            padding-left: 0.5rem;
+            padding-right: 0.5rem;
+            padding-bottom: 1rem;
+        }
+        .zoneConfirm {
+            background-color: #E82629;
+            
+        }
+        .newV {
+            margin-top: 2rem;
+        }
+        .delB {
+            background: grey !important;
+            color: white;
+        }
+        .list {
+            margin-top: 2rem;
+        }
+
     </style>
 </head>
 <body>
     <h1>Edition des véhicules</h1>
     <a href= "{{ path('app_vendeur') }}">Retour au Dashboard</a>
-    <a href= "{{ path('app_vehicule_new') }}">Nouveau Véhicule</a>
+    </br>
 
     <div class="contenu">
-        {% for v in vehicules %}
-        <section>
-            <p>ID: {{ v.id }} --- {{ v.marque }} {{ v.modele }}</p>
-            <p>type: {{ v.typeCarburant }} --- {{ v.chevaux }} chvx</p>
-            <p>Date d'Ajout : {{ v.dateAjout|date('d-m-Y') }}</p>
-            <p>Prix : {{ v.prix }}</p>
-            <button class="delB" id="{{ v.id }}">Supprimer</button>
-            <a href= {{ path('app_delete_vehicule', {'id': v.id} )}} style='display: none;' class="zoneConfirm" id="z{{ v.id }}">Confirmer</a>
-        </section>  
-        {% endfor %}
+    <a class='newV' href= "{{ path('app_vehicule_new') }}">Nouveau Véhicule</a>
+        <div class='list'>
+            {% for v in vehicules %}
+            <section>
+                <p>ID: {{ v.id }} --- {{ v.marque }} {{ v.modele }}</p>
+                <p>type: {{ v.typeCarburant }} --- {{ v.chevaux }} chvx</p>
+                <p>Date d'Ajout : {{ v.dateAjout|date('d-m-Y') }}</p>
+                <p>Prix : {{ v.prix }}</p>
+                <button class="delB" id="{{ v.id }}">Supprimer</button>
+                <a href= {{ path('app_delete_vehicule', {'id': v.id} )}} style='display: none;' class="zoneConfirm" id="z{{ v.id }}">Confirmer</a>
+            </section>  
+            {% endfor %}
+        </div>
     </div>
 
 
@@ -41,7 +75,7 @@
                 var userID = b.id;
                 var zone = document.getElementById(`z${b.id}`)
                 console.log(zone)
-                zone.style.display = 'block';
+                zone.style.display = 'inline-block';
 
                 zone.addEventListener('click', () => {
                     var zoneID = zone.id

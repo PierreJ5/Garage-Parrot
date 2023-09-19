@@ -3,23 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <title>Edit utilisateurs</title>
+
+    <style>
+        a, a:visited, button {
+            text-decoration: none;
+            color: black;
+            border: 1px solid black;
+            background: lightgrey;
+            padding: 0.2rem;
+        }
+        .dataUser {
+            margin-bottom: 2rem;
+            border-bottom: 1px solid black;
+            background: lightgrey;
+            padding-left: 1rem;
+            padding-top: 0.5rem;
+        }
+        .buttonZone {
+            margin-bottom: 1rem;
+        }
+        .delB {
+            background: grey !important;
+            color: white;
+        }
+        .zoneConfirm {
+            background-color: #E82629;
+            
+        }
+
+    </style>
+
+
+
+
 </head>
+
+
 <body>
     <h1>Edition des Utilisateurs</h1>
     <a href= "{{ path('app_admin') }}">Retour au Dashboard</a>
     <a href= "{{ path('app_register') }}">Créer un Utilisateur</a>
-        <div>
         {% for data in dataUsers %}
+        <div class="dataUser">
             <p>{{ data.id }} - {{ data.email }}</p>
             <ul>
                 {% for role in data.roles %}
                     <li>{{ role }}</li>
                 {% endfor %}
             </ul>
-            <button class="delB" id="{{ data.id }}">Supprimer</button>
-            <a href= {{ path('app_delete_user', {'id': data.id} )}} style='display: none;' class="zoneConfirm" id="z{{ data.id }}">Confirmer</a>
-        {% endfor %}
+            <div class="buttonZone">
+                <button class="delB" id="{{ data.id }}">Supprimer</button>
+                <a href= {{ path('app_delete_user', {'id': data.id} )}} style='display: none;' class="zoneConfirm" id="z{{ data.id }}">Confirmer</a>
+            </div>
         </div>
+        {% endfor %}
 
     <script>
         var zoneConfirm = document.querySelectorAll('.zoneConfirm')
@@ -29,7 +66,7 @@
             b.addEventListener('click', () => {
                 var userID = b.id;
                 var zone = document.getElementById(`z${b.id}`)
-                zone.style.display = 'block';
+                zone.style.display = 'inline-block';
 
                 zone.addEventListener('click', () => {
                     var zoneID = zone.id

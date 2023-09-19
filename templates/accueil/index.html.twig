@@ -46,12 +46,14 @@ section {
 
             <div class='col-lg-8 mx-auto'> 
             {% for sP in services_P %}
-                <section class='mt-1'>
-                    <h3 class='fs-5 ps-4'>{{ sP.getTitre }}</h3>
-                    <p class='ps-4'>Prix : {{ sP.getPrix }} $</p>
-                    <p class='ps-3'>
-                        {{ sP.getDescription }}
-                    </p>
+                <section class='mt-1 py-3'>
+                    <h3 class='fs-5 ps-3'>{{ sP.getTitre }}</h3>
+                    <p class='ps-5'>Prix : {{ sP.getPrix }} $</p>
+                    <div class='col-12 col-lg-10 mx-auto'>
+                        <p class='ps-3'>
+                            {{ sP.getDescription }}
+                        </p>
+                    </div>
                 </section>
             {% endfor %}
  
@@ -119,19 +121,20 @@ section {
                 <form action="" method="get" class="form-example mt-2 container">
                     <div class="form-example d-flex flex-column">
                         <label for="name">Entrez votre Nom: </label>
-                        <input class="col-12 col-md-4 mx-auto" type="text" name="name" id="name" required />
+                        <input disabled class="col-12 col-md-4 mx-auto" type="text" name="name" id="name" required />
                     </div>
                     <div class="form-example d-flex flex-column">
                         <label for="email">Entrez votre email: </label>
-                        <input class="col-12 col-md-6 mx-auto" type="email" name="email" id="email" required />
+                        <input disabled class="col-12 col-md-6 mx-auto" type="email" name="email" id="email" required />
                     </div>
                     <div class="form-example d-flex flex-column">
                         <label for="content">Entrez votre message: </label>
-                        <textarea class="col-12 col-md-6 mx-auto" name="content" id="content" rows="4" required />
+                        <textarea disabled class="col-12 col-md-6 mx-auto" name="content" id="content" rows="4" required/>
+                        Fonctionnalités actuellement non disponible. Merci pour votre compréhension.
                         </textarea>
                     </div>
                     <div class=" mt-1 form-example">
-                        <input type="submit" value="Envoyer" />
+                        <input disabled type="submit" value="Envoyer"/>
                     </div>
                 </form>
             </div>

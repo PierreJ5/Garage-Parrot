@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         contenuHTML += `
                             <div class="col-12 col-md-6 col-lg-4 mb-3">
                                 <div class="card">
-                                    <img src="/images/Vehicules/defaut.jpg" class="card-img-top" alt="image">
+                                    <img src="/images/${v.id}/${v.id}.jpg" class="card-img-top" alt="image">
                                     <div class="card-body">
                                         <h5 class="card-title">${v.marque} ${v.modele}</h5>
                                         <p>Année : ${v.annee}</p>

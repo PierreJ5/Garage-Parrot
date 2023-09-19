@@ -3,18 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <title>Edit Horaires</title>
+    <style>
+        a, a:visited {
+        text-decoration: none;
+        color: black;
+        border: 1px solid black;
+        background: lightgrey;
+        padding: 0.2rem;
+        }
+        .contenu {
+            width: 100;
+            height: 60vh;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-direction: column;
+        }
+
+    </style>
 </head>
 <body>
     <h1>Edition des Horaires</h1>
     <a href= "{{ path('app_admin') }}">Retour au Dashboard</a>
 
-
-    {{ form(form) }}
-    {% for flashMessage in app.flashes('success') %}
-        <div class="alert alert-success">
-            {{ flashMessage }}
-        </div>
-    {% endfor %}
+    <div class='contenu'>
+        {{ form(form) }}
+        {% for flashMessage in app.flashes('success') %}
+            <div class="alert alert-success">
+                {{ flashMessage }}
+            </div>
+        {% endfor %}
+    </div>
 
 </body>
 </html>

@@ -1,12 +1,20 @@
 {% for h in horaires %}
     <tr>
     <td>{{ h.jour }}</td>
+    {% if h.OuvAm %}
     <td>{{ h.OuvAm}}h</td>
     <td>/</td>
     <td>{{ h.FerAm }}h</td>
+    {% else %}
+    <td colspan="3">Fermé</td>
+    {% endif %}
     <td> - </td>
+    {% if h.OuvPm %}
     <td>{{ h.OuvPm }}h</td>
     <td>/</td>
     <td>{{ h.FerPm }}h</td>
+    {% else %}
+    <td colspan="3">&nbsp Fermé</td>
+    {% endif %}
     </tr>
 {% endfor %}
