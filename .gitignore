@@ -1,5 +1,3 @@
-###> PAS DE PUSH DES MIGRATIONS AVANT DEPLOIEMENT SUR LE SERVEUR ###
-/migrations/
 
 ###> symfony/framework-bundle ###
 /.env
