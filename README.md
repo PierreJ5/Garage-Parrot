@@ -9,9 +9,9 @@ Symfony CLI
 - Installez XAMPP. Si PHP à été installé avec Xampp, définissez le chemin dans le PATH système . Configurez XAMPP pour définir le port de MySql sur 3306.
 Lancez Apache et MySql avant de lancer le serveur local pour héberger l'application;
 
-- Si PHP n'a pas été installé avec Xampp, installez PHP manuellement, et reliez le PATH système, ainsi que le PATH XAMPP.
+- Si PHP n'a pas été installé avec Xampp, installez PHP manuellement, et reliez le PATH système, afin que xampp travaille avec une version PHP.
 
-- Installer Composer à partir de ce lien : https://getcomposer.org/download/ ;; Téléchargez l'exe pour windows si vous êtes sur windows, ou entrez les commandes si vous êtes sur Linux.
+- Installer Composer à partir de ce lien : https://getcomposer.org/download/ ; Téléchargez l'exe pour windows si vous êtes sur windows, ou entrez les commandes si vous êtes sur Linux.
 
 - Symfony CLI -> téléchargez les binaires sur le site https://symfony.com/download, ou, installez avec la commande scoop : `scoop install symfony-cli`
 

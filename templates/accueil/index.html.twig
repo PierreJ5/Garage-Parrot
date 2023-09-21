@@ -76,35 +76,21 @@ section {
 
             <div id="carouselExampleAutoplaying" class="carousel carousel-dark slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <p>Marie</p>
-                        <p>Satisfaite</p>
-                        <div class="col-8 col-lg-6 mx-auto">
-                            <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                            </p>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <p>Jean</p>
-                        <p>Services irréprochables</p>
-                        <div class="col-8 col-lg-6 mx-auto">
-                            <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore !
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <p>Stéphane</p>
-                        <p>Attente un peu longue</p>
-                        <div class="col-8 col-lg-6 mx-auto">
-                            <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore !
-                            Lorem ipsum dolor sit amet.
-                            </p>
-                        </div>
-                    </div>
+            {% set isFirstIteration = true %}
+            {% for a in avis %}
+            {% if a.affichage == true %}
+            <div class="carousel-item{% if isFirstIteration %} active{% endif %}">
+                <p>{{ a.nom }}</p>
+                <div class="col-8 col-lg-6 mx-auto">
+                    <p>
+                    {{ a.commentaire }}
+                    </p>
+                </div>
+            </div>
+            {% endif %}
+            {% set isFirstIteration = false %}
+            {% endfor %}
+
                 </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
